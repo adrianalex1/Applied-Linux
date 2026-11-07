@@ -1,0 +1,22 @@
+## Main launch file for the polaris for lab 2
+
+launch:
+  - node:
+      pkg: 'ndi_tracker'
+      exec: 'ndi_tracker'
+      name: 'ndi_tracker'
+      output: 'screen'
+      # -j is config jason file location, -P is reading/publishing period in seconds
+      args: '-j /src/lab_2/polaris_config/share/polaris_config.json -P 0.05'
+
+  - node:
+      pkg: 'tf2_ros'
+      exec: 'static_transform_publisher'
+      name: 'base_static_transform'
+      args: '--x -0.02961 --y 0 --z 0.4455 --qw 0.7071 --qx 0 --qy 0.7071 --qz 0 --frame-id marker_b --child-frame-id world'
+
+  - node:
+      pkg: 'tf2_ros'
+      exec: 'static_transform_publisher'
+      name: 'ee_static_transform'
+      args: '--x -0.02509 --y 0 --z 0.0238999 --qw 0.5 --qx 0.5 --qy 0.5 --qz 0.5 --frame-id marker_a --child-frame-id measured_ee'

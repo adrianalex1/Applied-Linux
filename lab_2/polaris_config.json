@@ -1,0 +1,32 @@
+/* -*- Mode: Javascript; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+{
+    // Configuration file for the Polaris in Lab 2
+    // Applied Robotics
+    
+    // first serial port to check
+    "serial-port": "/dev/ttyUSB0",
+
+    // path to look for files
+    "definition-path": ["~/workspace/lab_ws/src/lab_2/polaris_config/share/roms"],
+
+    // name of base frame
+    "name": "polaris",
+
+    // list of tools to be tracked
+    "tools": [
+        {
+            // right arm robot base frame
+            "name": "marker_a",
+            "definition": "8700338.rom",
+            "unique-id" : "01-34801401-8700338" 
+        }
+        ,
+        {
+            // left arm robot base frame
+            "name": "marker_b",
+            "definition" : "8700339.rom",
+            "unique-id" : "01-34801403-8700339"
+        }
+    ]
+
+}
