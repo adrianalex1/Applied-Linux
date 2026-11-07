@@ -1,0 +1,36 @@
+# IMPLEMENT LAUNCH FILE HERE
+
+launch:
+
+- arg:
+    name: "angular_frequency"
+    default: "0.5"
+
+- arg:
+    name: "amplitude"
+    default: "10.0"
+
+- arg:
+    name: "mass"
+    default: "1.0"
+
+- arg:
+    name: "spring_const"
+    default: "1.0"
+
+- arg:
+    name: "damper_const"
+    default: "1.0"
+
+
+- node:
+    pkg: "mass_spring_damper"
+    exec: "force_publisher"
+    name: "force_publisher"
+    args: "$(var angular_frequency) $(var amplitude)"
+
+- node:
+    pkg: "mass_spring_damper"
+    exec: "mass_spring_damper_node"
+    name: "mass_spring_damper_node"
+    args: "$(var mass) $(var spring_const) $(var damper_const)"
