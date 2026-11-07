@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_name">
+
+<material name="red">
+<color rgba="1 0 0 1"/>
+</material>
+
+<material name="blue">
+<color rgba="0 0 1 1"/>
+</material>
+
+<material name="green">
+<color rgba="0 1 0 1"/>
+</material>
+
+
+<link name="link_0">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link0.stl"/>
+        </geometry>
+        <material name="red"/>
+    </visual>
+</link>
+
+<joint name="joint_1" type="revolute">
+    <parent link="link_0"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.150" rpy="0 0 0"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="-${pi}" upper="${pi}" effort="1" velocity="${pi}"/>
+</joint>
+
+<link name="link_1">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link1.stl"/>
+        </geometry>
+        <material name="green"/>
+    </visual>
+</link>
+
+<joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin xyz="0.2 0 0.3" rpy="0 ${pi/2} 0"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="-${pi}" upper="${pi}" effort="1" velocity="${pi}"/>
+</joint>
+
+<link name="link_2">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link2and4.stl"/>
+        </geometry>
+        <material name="blue"/>
+    </visual>
+</link>
+
+<joint name="joint_3" type="prismatic">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin xyz="-0.5 0 0.2" rpy="0 -${pi/2} 0"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="0" upper="0.4" effort="1" velocity="100"/>
+</joint>
+
+<link name="link_3">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link3and5.stl"/>
+        </geometry>
+        <material name="red"/>
+    </visual>
+</link>
+
+<joint name="joint_4" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_4"/>
+    <origin xyz="-0.2 0 0.2" rpy="0 ${pi/2} ${pi}"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="-${pi}" upper="${pi}" effort="1" velocity="${pi}"/>
+</joint>
+
+<link name="link_4">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link2and4.stl"/>
+        </geometry>
+        <material name="blue"/>
+    </visual>
+</link>
+
+<joint name="joint_5" type="prismatic">
+    <parent link="link_4"/>
+    <child link="link_5"/>
+    <origin xyz="-0.5 0 0.2" rpy="${pi/2} ${pi} -${pi/2}"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="0" upper="0.4" effort="1" velocity="100"/>
+</joint>
+
+<link name="link_5">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link3and5.stl"/>
+        </geometry>
+        <material name="red"/>
+    </visual>
+</link>
+
+<joint name="joint_6" type="revolute">
+    <parent link="link_5"/>
+    <child link="link_6"/>
+    <origin xyz="-0.2 0 0.2" rpy="-${pi/2} ${pi/2} ${pi/2}"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="-${pi}" upper="${pi}" effort="1" velocity="${pi}"/>
+</joint>
+
+<link name="link_6">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link6.stl"/>
+        </geometry>
+        <material name="green"/>
+    </visual>
+</link>
+
+<joint name="joint_7" type="revolute">
+    <parent link="link_6"/>
+    <child link="link_7"/>
+    <origin xyz="-0.2 0 0.2" rpy="0 -${pi/2} 0"/>
+    <axis xyz ="0 0 1"/>
+    <limit lower="-${pi}" upper="${pi}" effort="1" velocity="${pi}"/>
+</joint>
+
+<link name="link_7">
+    <visual>
+        <geometry>
+            <mesh filename="package://example_robot/meshes/link7.stl"/>
+        </geometry>
+        <material name="blue"/>
+    </visual>
+</link>
+
+<joint name="ee_joint" type="fixed">
+    <parent link="link_7"/>
+    <child link="ee_link"/>
+    <origin xyz="0 0 0.48" rpy="0 0 0"/>
+</joint>
+
+<link name="ee_link">
+</link>
+
+
+</robot>
